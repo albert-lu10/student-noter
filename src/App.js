@@ -1,25 +1,47 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Popup from './Popup.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  state = {
+    showAddPopup: false,
+  };
+  
+  toggleAddPopup = e => {
+    this.setState({
+      showAddPopup: !this.state.showAddPopup
+    });
+  };
+
+  hideAddPopup = () => {
+    this.setState({
+      showAddPopup: false
+    });
+  };
+
+  addPopupComponents 
+
+  render() {
+    return (
+      <div className="App">
+
+        <button onClick={e => { this.toggleAddPopup(); }}> Show Add Pop Up </button>
+        <p> Hello! </p>
+
+        <Popup show={this.state.showAddPopup} onHide={this.hideAddPopup} components={
+          <h1> Hello! </h1>
+        }/>
+
+      </div>
+    );
+  }
 }
+
 
 export default App;
